@@ -13,11 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: 1.6.6
-
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
@@ -25,11 +20,17 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6
+
       - name: Zip Lambda function
         run: |
           cd lambda
-          zip -r ../lambda/geoip_logger.zip .
-          cd ..
+          zip -r geoip_logger.zip .
+          mv geoip_logger.zip ../lambda/
+        shell: bash
 
       - name: Terraform Init
         run: terraform init
