@@ -27,10 +27,7 @@ jobs:
 
       - name: Zip Lambda function
         run: |
-          cd lambda
-          zip -r geoip_logger.zip .
-          mv geoip_logger.zip ../lambda/
-        shell: bash
+          zip -r lambda/geoip_logger.zip lambda/
 
       - name: Terraform Init
         run: terraform init
