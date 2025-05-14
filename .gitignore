@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.zip
+*.egg-info/
+.env
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+crash.log
+override.tf
+override.tf.json
+terraform.tfvars
+*.backup
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
